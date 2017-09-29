@@ -1,0 +1,11 @@
+{
+  "name": "heaths-ice-cream-menu",
+  "version": "0.1.0",
+  "description": "Heath's Ice Cream Menu!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
