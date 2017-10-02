@@ -16,19 +16,19 @@ gulp.task( 'sassify', function() {
 		.pipe( browserSync.reload( { stream : true } ) );
 });
 
-gulp.task( 'htmlify', function() {
-	return gulp.src( 'app/**/*.html' )
-		.pipe( gulp.dest( 'dist') )
-		.pipe( browserSync.reload( { stream : true } ) );
-});
-
 gulp.task( 'jsify', function() {
 	return gulp.src( 'app/js/**/*.js' )
 		.pipe( gulp.dest( 'dist/js') )
 		.pipe( browserSync.reload( { stream : true } ) );		
 });
 
-gulp.task( 'build', [ 'sassify', 'htmlify', 'jsify' ] );
+gulp.task( 'htmlify', function() {
+	return gulp.src( 'app/**/*.html' )
+		.pipe( gulp.dest( 'dist') )
+		.pipe( browserSync.reload( { stream : true } ) );
+});
+
+gulp.task( 'build', [ 'sassify', 'jsify', 'htmlify' ] );
 
 gulp.task( 'browserSync', function() {
 	browserSync.init( {
@@ -38,9 +38,9 @@ gulp.task( 'browserSync', function() {
 	});
 });
 
-gulp.task( 'watch', [ 'browserSync', 'sassify', 'jsify' ], function() {
-	gulp.watch( 'app/scss/**/*.scss', [ 'sassify' ] );	
-	gulp.watch( 'app/**/*.html', [ 'htmlify' ] );	
+gulp.task( 'watch', [ 'browserSync', 'sassify', 'jsify', 'htmlify' ], function() {
+	gulp.watch( 'app/scss/**/*.scss', [ 'sassify' ] );		
 	gulp.watch( 'app/js/**/*.js', [ 'jsify' ] );	
+	gulp.watch( 'app/**/*.html', [ 'htmlify' ] );	
 });
 
